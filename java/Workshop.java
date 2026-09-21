@@ -1,0 +1,290 @@
+import java.util.List;
+
+public class Workshop {
+    public static void main(String[] args) {
+
+    }
+
+    // Método que suma dos números enteros
+     public int sumarDosNumeros(int a, int b) {
+        return a + b;
+    }
+
+    // Método que encuentra el mayor de tres números enteros
+      public int mayorDeTresNumeros(int a, int b, int c) {
+        if (a >= b && a >= c) return a;
+        if (b >= c) return b;
+        return c;
+    }
+
+    // Método que retorna la tabla de multiplicar de un número
+      public int[] tablaMultiplicar(int numero, int limite) {
+    int[] resultado = new int[limite];
+    for (int i = 0; i < limite; i++) {
+        resultado[i] = numero * (i + 1);
+    }
+    return resultado;
+    }
+
+    // Método que calcula el factorial de un número entero
+      public long factorial(int n) {
+    if (n < 0) {
+        throw new IllegalArgumentException("El número no puede ser negativo");
+    }
+    long fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+    }
+
+    // Método que verifica si un número es primo
+      public boolean esPrimo(int numero) {
+    if (numero <= 1) return false;
+    for (int i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i == 0) return false;
+    }
+    return true;
+    }
+
+    // Método que genera una serie de Fibonacci
+      public int[] serieFibonacci(int n) {
+    if (n < 0) {
+        throw new IllegalArgumentException("n no puede ser negativo");
+    }
+    if (n == 0) return new int[0];
+    if (n == 1) return new int[]{0};
+    
+    int[] fib = new int[n];
+    fib[0] = 0;
+    fib[1] = 1;
+    for (int i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    return fib;
+    }
+
+    // Método que suma todos los elementos de un arreglo
+      public int sumaElementos(int[] arreglo) {
+    int suma = 0;
+    for (int i = 0; i < arreglo.length; i++) {
+        suma += arreglo[i];
+    }
+    return suma;
+    }
+
+    // Método que calcula el promedio de los elementos de un arreglo
+      public double promedioElementos(int[] arreglo) {
+    if (arreglo.length == 0) return 0;
+    int suma = 0;
+    for (int i = 0; i < arreglo.length; i++) {
+        suma += arreglo[i];
+    }
+    return (double) suma / arreglo.length;
+    }
+
+    // Método que encuentra el elemento mayor en un arreglo
+      public int encontrarElementoMayor(int[] arreglo) {
+    int mayor = arreglo[0];
+    for (int i = 1; i < arreglo.length; i++) {
+        if (arreglo[i] > mayor) {
+            mayor = arreglo[i];
+        }
+    }
+    return mayor;
+    }
+
+    // Método que encuentra el elemento menor en un arreglo
+     public int encontrarElementoMenor(int[] arreglo) {
+    int menor = arreglo[0];
+    for (int i = 1; i < arreglo.length; i++) {
+        if (arreglo[i] < menor) {
+            menor = arreglo[i];
+        }
+    }
+    return menor;
+    }
+
+    // Método que busca un elemento en un arreglo
+     public boolean buscarElemento(int[] arreglo, int elemento) {
+    for (int i = 0; i < arreglo.length; i++) {
+        if (arreglo[i] == elemento) {
+            return true;
+        }
+    }
+    return false;
+    }
+
+    // Método que invierte un arreglo
+ public int[] invertirArreglo(int[] arreglo) {
+    int[] invertido = new int[arreglo.length];
+    for (int i = 0; i < arreglo.length; i++) {
+        invertido[i] = arreglo[arreglo.length - 1 - i];
+    }
+    return invertido;
+    }
+
+    // Método que ordena un arreglo en orden ascendente
+      public int[] ordenarArreglo(int[] arreglo) {
+    int[] ordenado = arreglo.clone(); 
+    java.util.Arrays.sort(ordenado);
+    return ordenado;
+    }
+
+    // Método que elimina los duplicados de un arreglo
+      public int[] eliminarDuplicados(int[] arreglo) {
+    return java.util.Arrays.stream(arreglo).distinct().toArray();
+    }
+
+    // Método que combina dos arreglos en uno solo
+      public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
+    int[] combinado = new int[arreglo1.length + arreglo2.length];
+    System.arraycopy(arreglo1, 0, combinado, 0, arreglo1.length);
+    System.arraycopy(arreglo2, 0, combinado, arreglo1.length, arreglo2.length);
+    return combinado;
+    }
+
+    // Método que rota un arreglo n posiciones
+      public int[] rotarArreglo(int[] arreglo, int posiciones) {
+    if (arreglo.length == 0) return arreglo;
+    int n = arreglo.length;
+    int[] rotado = new int[n];
+    // Asegurar que las posiciones no sean mayores al tamaño del arreglo
+    posiciones = posiciones % n; 
+    if (posiciones < 0) posiciones += n;
+    
+    for (int i = 0; i < n; i++) {
+        rotado[i] = arreglo[(i + posiciones) % n];
+    }
+    return rotado;
+    }
+
+    // Método que cuenta los caracteres en una cadena
+      public int contarCaracteres(String cadena) {
+        return cadena.length();
+    }
+
+    // Método que invierte una cadena
+      public String invertirCadena(String cadena) {
+        StringBuilder sb = new StringBuilder(cadena);
+        return sb.reverse().toString();
+    }
+
+    // Método que verifica si una cadena es un palíndromo
+      public boolean esPalindromo(String cadena) {
+    String limpia = cadena.replaceAll("\\s+", "").toLowerCase();
+    String invertida = new StringBuilder(limpia).reverse().toString();
+    return limpia.equals(invertida);
+    }
+
+    // Método que cuenta el número de palabras en una cadena
+      public int contarPalabras(String cadena) {
+    if (cadena == null || cadena.trim().isEmpty()) {
+        return 0;
+    }
+    String[] palabras = cadena.trim().split("\\s+");
+    return palabras.length;
+    }
+
+    // Método que convierte una cadena a mayúsculas
+      public String convertirAMayusculas(String cadena) {
+    return cadena == null ? null : cadena.toUpperCase();
+    }
+
+    // Método que convierte una cadena a minúsculas
+      public String convertirAMinusculas(String cadena) {
+    return cadena == null ? null : cadena.toLowerCase();
+    }
+
+    // Método que reemplaza una subcadena en una cadena por otra subcadena
+      public String reemplazarSubcadena(String cadena, String vieja, String nueva) {
+    if (cadena == null || vieja == null || nueva == null) return cadena;
+    return cadena.replace(vieja, nueva);
+    }
+
+    // Método que busca una subcadena en una cadena y retorna su índice
+      public int buscarSubcadena(String cadena, String subcadena) {
+    if (cadena == null || subcadena == null) return -1;
+    return cadena.indexOf(subcadena);
+    }
+
+    // Método que valida un correo electrónico
+      public boolean validarCorreoElectronico(String correo) {
+    if (correo == null) return false;
+    return correo.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    // Método que calcula el promedio de una lista de números
+      public double promedioLista(java.util.List<Integer> lista) {
+    if (lista == null || lista.isEmpty()) return 0.0;
+    double suma = 0;
+    for (int num : lista) {
+        suma += num;
+    }
+    return suma / lista.size();
+    }
+
+    // Método que convierte un número en su representación binaria
+    public String convertirABinario(int numero) {
+    return Integer.toBinaryString(numero);
+    }
+
+    // Método que convierte un número en su representación hexadecimal
+      public String convertirAHexadecimal(int numero) {
+    return Integer.toHexString(numero).toUpperCase();
+    }
+
+    // Método para el juego de piedra, papel, tijera, lagarto, Spock
+    public String jugarPiedraPapelTijeraLagartoSpock(String eleccionUsuario) {
+        // TODO: Implementar el método para el juego de Piedra, Papel, Tijera, Lagarto, Spock.
+        // Las reglas del juego son:
+        // - Piedra vence a Tijera y Lagarto
+        // - Papel vence a Piedra y Spock
+        // - Tijera vence a Papel y Lagarto
+        // - Lagarto vence a Spock y Papel
+        // - Spock vence a Tijera y Piedra
+
+
+        // El método debe retornar un mensaje indicando el resultado del juego.
+        // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
+        return "";
+    }
+public String pptls2(String[] game) {
+    String j1 = game[0];
+    String j2 = game[1];
+
+    if (j1.equals(j2)) {
+        return "Empate";
+    }
+
+    boolean ganaJ1 = false;
+    switch (j1) {
+        case "R": ganaJ1 = j2.equals("L") || j2.equals("S"); break;
+        case "P": ganaJ1 = j2.equals("R") || j2.equals("V"); break;
+        case "S": ganaJ1 = j2.equals("P") || j2.equals("L"); break;
+        case "L": ganaJ1 = j2.equals("V") || j2.equals("P"); break;
+        case "V": ganaJ1 = j2.equals("S") || j2.equals("R"); break;
+    }
+
+    return ganaJ1 ? "Jugador 1" : "Jugador 2";
+    }
+public double areaCirculo(double radio) {
+    return Math.PI * Math.pow(radio, 2);
+    }
+public String zoodiac(int day, int month) {
+    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
+    if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Tauro";
+    if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Geminis";
+    if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer";
+    if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo";
+    if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo";
+    if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
+    if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Escorpio";
+    if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagitario";
+    if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricornio";
+    if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Acuario";
+    if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Piscis";
+    return "Fecha invalida";
+    }
+}
+
